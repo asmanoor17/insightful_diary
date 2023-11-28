@@ -1,4 +1,4 @@
-QLite. Versions 3.8.0 and up are supported.
+# QLite. Versions 3.8.0 and up are supported.
 #   gem install pg
 #
 #   Ensure the pg gem is defined in your Gemfile
