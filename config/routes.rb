@@ -10,4 +10,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
     root "home#index"
+    resources :moods
+
+    get '/api/get_news_articles', to: 'api#get_news_articles'
 end
