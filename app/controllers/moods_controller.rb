@@ -6,31 +6,29 @@ class MoodsController < ApplicationController
     end
   
     def show
-      # Your show action logic here
+     @mood = Mood.find(params[:id])
     end
   
     def new
-      # Your new action logic here
       @mood = Mood.new
     end
   
     def create
-      # Your create action logic here
-      @mood = Mood.new(mood_params)
-  
-      if @mood.save
-        redirect_to @mood, notice: 'Mood was successfully created.'
-      else
-        render :new
-      end
-    end
+  @mood = Mood.new(mood_params)
+
+  if @mood.save
+    render turbo_stream: turbo_stream.append('your-frame-id', partial: 'your_form_partial', locals: { mood: @mood })
+  else
+    render :new
+  end
+end
+
   
     def edit
-      # Your edit action logic here
+      @mood = Mood.find(params[:id])
     end
   
     def update
-      # Your update action logic here
       if @mood.update(mood_params)
         redirect_to @mood, notice: 'Mood was successfully updated.'
       else
@@ -39,7 +37,6 @@ class MoodsController < ApplicationController
     end
   
     def destroy
-      # Your destroy action logic here
       @mood.destroy
       redirect_to moods_url, notice: 'Mood was successfully destroyed.'
     end
@@ -51,7 +48,8 @@ class MoodsController < ApplicationController
     end
   
     def mood_params
-      params.require(:mood).permit(:phrase, :article, :dateSearched)
+      params.require(:mood).permit(:phrase, :articles, :dateSearched, :users_first_name)
     end
+    
   end
   

@@ -1,0 +1,24 @@
+<h1>Edit Mood</h1>
+
+<%= form_with(model: @mood, local: true) do |form| %>
+  <div class="field">
+    <%= form.label :phrase %>
+    <%= form.text_field :phrase, required: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :article %>
+    <%= form.text_area :article, required: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :dateSearched %>
+    <%= form.date_field :dateSearched, required: true %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Update Mood' %>
+  </div>
+<% end %>
+
+<%= link_to 'Back', moods_path %>

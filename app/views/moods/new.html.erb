@@ -1,0 +1,31 @@
+<h1>Create a New Mood</h1>
+<form id="newsForm">
+  <label for="query">Search Query:</label>
+  <input type="text" id="query" name="query" required>
+  <button type="submit">Get News</button>
+</form>
+
+<div id="newsResults"></div>
+
+<%= form_with(model: @mood, local: true) do |form| %>
+  <div class="field">
+    <%= form.label :phrase %>
+    <%= form.text_field :phrase, required: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :article %>
+    <%= form.text_area :article, required: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :dateSearched %>
+    <%= form.date_field :dateSearched, required: true %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Create Mood' %>
+  </div>
+<% end %>
+
+<%= link_to 'Back', moods_path %>
