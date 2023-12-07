@@ -35,3 +35,6 @@ input, textarea {
   input[type="submit"]:hover {
     background-color: #0056b3;
   }
+  body {
+    background-color: #a88da9;
+  }

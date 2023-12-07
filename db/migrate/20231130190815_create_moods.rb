@@ -4,10 +4,11 @@ class CreateMoods < ActiveRecord::Migration[7.1]
       t.string :phrase
       t.text :articles
       t.string :dateSearched
-      t.references :users, null: false, foreign_key: true
-      t.references :journals, null: false, foreign_key: true
+      t.references :user, null: false, foreign_key: true
+      t.references :journal, null: false, foreign_key: true
 
       t.timestamps
     end
   end
 end
+

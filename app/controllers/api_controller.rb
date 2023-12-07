@@ -1,4 +1,3 @@
-
 class ApiController < ApplicationController
   def get_news_articles
     query = params[:query]
