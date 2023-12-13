@@ -14,16 +14,23 @@ class MoodsController < ApplicationController
     end
   
     def create
-  @mood = Mood.new(mood_params)
+      @mood = Mood.new(mood_params)
 
-  if @mood.save
-    render turbo_stream: turbo_stream.append('your-frame-id', partial: 'your_form_partial', locals: { mood: @mood })
-  else
-    render :new
-  end
-end
+      if @mood.save
+        redirect_to mood_path(@mood), notice:'Mood was successfully created'
+        # render turbo_stream: turbo_stream.append('your-frame-id', partial: 'your_form_partial', locals: { mood: @mood })
+      else
+        puts "Failed to save mood!"
+        puts @mood.errors.full_messages
+        render :new
+      end
+    end
+   
+    def add_articles_to_mood 
+      puts "I'm in the add moods action"
+      mood = Mood.update!(articles: article_url)
+    end 
 
-  
     def edit
       @mood = Mood.find(params[:id])
     end
@@ -32,6 +39,8 @@ end
       if @mood.update(mood_params)
         redirect_to @mood, notice: 'Mood was successfully updated.'
       else
+        puts "Failed to update mood!"
+        puts @mood.errors.full_messages
         render :edit
       end
     end
@@ -48,7 +57,7 @@ end
     end
   
     def mood_params
-      params.require(:mood).permit(:phrase, :articles, :dateSearched, :users_first_name)
+      params.require(:mood).permit(:phrase, :articles, :dateSearched, :user_id, :journal_id)
     end
     
   end

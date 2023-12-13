@@ -1,5 +1,5 @@
 class Mood < ApplicationRecord
   belongs_to :user
-  belongs_to :journal
+  has_many :journals
 end
 
