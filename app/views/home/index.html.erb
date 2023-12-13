@@ -1,10 +1,68 @@
-<h1><em> Insightful Diary </em></h1>
-<% if user_signed_in?%>
-  <div> 👋🏻 
-    Welcome, <%= current_user.first_name.capitalize%>! </div>
-  <%=button_to "Sign out", destroy_user_session_path, method: :delete, class:"btn btn-dark"%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <%= stylesheet_link_tag 'home' %>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f5f5f5; /* Set a light background color */
+      color: #333; /* Set the text color */
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      background-image: url('https://ca-times.brightspotcdn.com/dims4/default/cd10d8e/2147483647/strip/true/crop/2000x1333+0+0/resize/2000x1333!/quality/75/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2F8e%2Fb7%2F99beae9a4be0bbced1487b04b619%2Fla-hm-nyny-mental-health.jpg');
+      background-repeat: no-repeat;
+      
+   }
 
-<% else %>
-  <%= button_to "Sign in", new_user_session_path, class:"btn btn-dark"%>
-<% end %>
+
+
+    h1 {
+      font-size: 2.5em;
+      color: #007bff; /* Set a primary color for headings */
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 1.2em;
+      line-height: 1.5;
+      color: #666; /* Set a slightly muted text color */
+      margin-bottom: 30px;
+      text-align: center;
+  
+    }
+
+    .welcome-message {
+      font-size: 1.2em;
+      margin-bottom: 10px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 1em;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      color: #fff;
+    }
+
+    .btn-dark {
+      background-color: #343a40; /* Set a dark background color for dark buttons */
+    }
+  </style>
+</head>
+<body>
+  <% if user_signed_in? %>
+    <div class="welcome-message">👋🏻 Welcome, <%= current_user.first_name.capitalize %>!</div>
+    <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "btn btn-dark" %>
+  <% else %>
+    <%= button_to "Sign in", new_user_session_path, class: "btn btn-dark" %>
+  <% end %>
+</body>
+</html>
 

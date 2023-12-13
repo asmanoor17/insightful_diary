@@ -1,14 +1,84 @@
-<p style="color: green"><%= notice %></p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f5f5f5; /* Set a light background color */
+      color: #333; /* Set the text color */
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-<h1>Journals</h1>
+    h1 {
+      font-size: 2.5em;
+      color: #007bff; /* Set a primary color for headings */
+      margin-bottom: 20px;
+    }
 
-<div id="journals">
-  <% @journals.each do |journal| %>
-    <%= render journal %>
-    <p>
-      <%= link_to "Show this journal", journal %>
-    </p>
-  <% end %>
-</div>
+    p {
+      font-size: 1.2em;
+      line-height: 1.5;
+      color: green; /* Set a specific color for notice messages */
+      margin-bottom: 20px;
+    }
 
-<%= link_to "New journal", new_journal_path %>
+    #journals {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .journal {
+      border: 1px solid #ddd; /* Add a border to each journal entry */
+      padding: 15px;
+      border-radius: 5px;
+    }
+
+    .journal a {
+      text-decoration: none;
+      color: #007bff; /* Set a link color */
+    }
+
+    .journal a:hover {
+      text-decoration: underline; /* Add underline on hover for links */
+    }
+
+    .new-journal-link {
+      display: block;
+      margin-top: 20px;
+      text-decoration: none;
+      padding: 10px 20px;
+      font-size: 1em;
+      background-color: #007bff; /* Set a primary color for the "New journal" link */
+      color: #fff; /* Set text color for the "New journal" link */
+      border-radius: 5px;
+    }
+
+    .new-journal-link:hover {
+      background-color: #0056b3; /* Darken the background on hover for the "New journal" link */
+    }
+  </style>
+</head>
+<body>
+  <p><%= notice %></p>
+
+  <h1>Journals</h1>
+
+  <div id="journals">
+    <% @journals.each do |journal| %>
+      <div class="journal">
+        <%= render journal %>
+        <p>
+          <%= link_to "Show this journal", journal %>
+        </p>
+      </div>
+    <% end %>
+  </div>
+
+  <%= link_to "New journal", new_journal_path, class: "new-journal-link" %>
+</body>
+</html>

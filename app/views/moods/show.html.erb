@@ -1,8 +1,23 @@
 <h1>Mood Details</h1>
 
 <p><strong>Phrase:</strong> <%= @mood.phrase %></p>
-<p><strong>Article:</strong> <%= @mood.article %></p>
 <p><strong>Date Searched:</strong> <%= @mood.dateSearched %></p>
+
+<% if @mood.articles.present? %>
+    <p><strong>Article:</strong> <%= @mood.articles %></p> 
+<% else %>
+    <form id="newsForm">
+        <label for="query">Search Query:</label>
+        <input type="text" id="query" name="query" required placeholder=<%= @mood.phrase %>>
+        <button type="submit">Get News</button>
+    </form>
+
+    <div id="newsResults">
+    </div>
+
+    <%= button_to 'Add Articles to Mood', add_articles_to_mood_mood_path(@mood), method: :post,  class: 'btn btn-primary' %>
+<% end %>
+<br/>
 
 <%= link_to 'Edit', edit_mood_path(@mood) %> |
 <%= link_to 'Back', moods_path %>

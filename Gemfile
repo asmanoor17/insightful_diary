@@ -28,6 +28,9 @@ gem "jbuilder"
 
 gem 'rest-client'
 
+gem 'rails-ujs'
+
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 

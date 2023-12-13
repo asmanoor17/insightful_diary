@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :journals
   devise_for :users
+  
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -9,8 +10,14 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-    root "home#index"
-    resources :moods
-
+  root "home#index"
+  resources :moods do
+    member do
+      post 'add_articles_to_mood'
+    end
+  end
+    
     get '/api/get_news_articles', to: 'api#get_news_articles'
 end
+
+# config/routes.rb

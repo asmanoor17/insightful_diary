@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="<%= root_path %>">Let your mind run free..</a>
+    <a class="navbar-brand" href="<%= root_path %>">Insighful Diary</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -9,15 +9,21 @@
         <li class="nav-item">
           <%= link_to 'Home', root_path %>
         </li>
+       
+
+      <li class="nav-item">
+        <%= link_to 'Moods', new_mood_path%>
+
         <li class="nav-item">
-          <%= link_to 'Journals', journals_path %>
-        </li>
+        <%= link_to 'Journals', journals_path %>
+      </li>
 
         <% if user_signed_in? %>
-          <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
-        <% else %>
-          <%= link_to 'Sign In', new_user_session_path %>
-        <% end %>
+        <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
+      <% else %>
+        <%= link_to 'Sign In', new_user_session_path %>
+      <% end %>
+      
       </ul>
     </div>
   </div>

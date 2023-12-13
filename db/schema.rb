@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_30_190815) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_10_211743) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -19,19 +19,19 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_30_190815) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "mood_id", null: false
+    t.index ["mood_id"], name: "index_journals_on_mood_id"
     t.index ["user_id"], name: "index_journals_on_user_id"
   end
 
   create_table "moods", force: :cascade do |t|
     t.string "phrase"
     t.text "articles"
-    t.string "dateSearched"
-    t.bigint "users_id", null: false
-    t.bigint "journals_id", null: false
+    t.datetime "dateSearched"
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["journals_id"], name: "index_moods_on_journals_id"
-    t.index ["users_id"], name: "index_moods_on_users_id"
+    t.index ["user_id"], name: "index_moods_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -50,7 +50,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_30_190815) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "journals", "moods"
   add_foreign_key "journals", "users"
-  add_foreign_key "moods", "journals", column: "journals_id"
-  add_foreign_key "moods", "users", column: "users_id"
+  add_foreign_key "moods", "users"
 end
