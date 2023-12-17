@@ -12,9 +12,6 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      background-image: url('https://ca-times.brightspotcdn.com/dims4/default/cd10d8e/2147483647/strip/true/crop/2000x1333+0+0/resize/2000x1333!/quality/75/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2F8e%2Fb7%2F99beae9a4be0bbced1487b04b619%2Fla-hm-nyny-mental-health.jpg');
-      background-repeat: no-repeat;
-      
    }
 
 
@@ -30,8 +27,6 @@
       line-height: 1.5;
       color: #666; /* Set a slightly muted text color */
       margin-bottom: 30px;
-      text-align: center;
-  
     }
 
     .welcome-message {
@@ -57,6 +52,9 @@
   </style>
 </head>
 <body>
+  <h1><em> Insightful Diary </em></h1>
+  <p>Are you tired of the daily grind and don't know why? Here you can search certain phrases that relate to your current mood and get an article that gives you insightful details about it! After reading the article, you can jot down what you learned from it, how you felt after reading it, or whatever your heart desires!</p>
+
   <% if user_signed_in? %>
     <div class="welcome-message">👋🏻 Welcome, <%= current_user.first_name.capitalize %>!</div>
     <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "btn btn-dark" %>
