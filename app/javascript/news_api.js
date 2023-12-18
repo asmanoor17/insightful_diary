@@ -32,16 +32,20 @@ document.addEventListener('DOMContentLoaded', function() {
   
       articles.forEach(function(article) {
         const li = document.createElement('li');
+        const anchor = document.createElement('a'); // Change here
+        anchor.href = article.url; // Set href attribute to the article URL
+  
         const input = document.createElement('input');
         input.type = 'radio';
         input.name = 'articleSelection'; 
-        input.value = article.url; 
+        input.value = article.url;
   
         const label = document.createElement('label');
         label.textContent = article.title;
   
-        li.appendChild(input);
-        li.appendChild(label);
+        anchor.appendChild(input);
+        anchor.appendChild(label);
+        li.appendChild(anchor); // Append anchor tag instead of li tag
         ul.appendChild(li);
       });
   

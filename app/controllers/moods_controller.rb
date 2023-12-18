@@ -27,7 +27,6 @@ class MoodsController < ApplicationController
     end
    
     def add_articles_to_mood 
-      puts "I'm in the add moods action"
       mood = Mood.update!(articles: article_url)
     end 
 
